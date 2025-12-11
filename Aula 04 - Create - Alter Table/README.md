@@ -23,3 +23,67 @@ CREATE TABLE clientes (
     nome VARCHAR2(50),
     idade NUMBER
 );
+```
+#### ➤ Adicionar uma coluna
+```sql
+ALTER TABLE clientes 
+ADD email VARCHAR2(80);
+```
+#### ➤ Modificar o tipo ou tamanho de uma coluna
+```sql
+ALTER TABLE clientes 
+MODIFY idade NUMBER(3);
+```
+#### ➤ Remover uma coluna
+```sql
+ALTER TABLE clientes 
+DROP COLUMN email;
+```
+#### ➤ Renomear uma tabela
+```sql
+ALTER TABLE clientes 
+RENAME TO clientes_ativos;
+```
+#### ➤ Renomear uma coluna
+```sql
+ALTER TABLE clientes 
+RENAME COLUMN nome TO nome_completo;
+```
+
+### 🧠 Conceitos-Chave
+- **DDL (Data Definition Language):** grupo de comandos que alteram a estrutura do banco.
+
+- **CREATE TABLE:** cria uma nova tabela.
+
+- **ALTER TABLE:** modifica uma tabela existente.
+
+- **Tipos de dados comuns:**
+  - `NUMBER` → números  
+  - `VARCHAR2(n)` → textos  
+  - `DATE` → datas
+
+- **Boas práticas:**
+  - Usar nomes descritivos  
+  - Definir tipos corretos para evitar inconsistências  
+  - Planejar antes de criar estruturas
+
+### ✅ Exemplo Completo da Aula
+```sql
+-- Criar tabela
+CREATE TABLE clientes (
+    id NUMBER,
+    nome VARCHAR2(50),
+    idade NUMBER
+);
+
+-- Adicionar coluna de e-mail
+ALTER TABLE clientes ADD email VARCHAR2(80);
+
+-- Corrigir tamanho da coluna idade
+ALTER TABLE clientes MODIFY idade NUMBER(3);
+
+-- Renomear coluna
+ALTER TABLE clientes RENAME COLUMN nome TO nome_completo;
+
+```
+
