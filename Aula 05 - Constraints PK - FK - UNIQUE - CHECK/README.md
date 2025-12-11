@@ -26,3 +26,65 @@ CREATE TABLE clientes (
     documento VARCHAR2(20) UNIQUE,
     idade NUMBER CHECK (idade >= 18)
 );
+```
+
+#### ➤ Criar FOREIGN KEY relacionando duas tabelas
+```sql
+CREATE TABLE pedidos (
+    id NUMBER PRIMARY KEY,
+    cliente_id NUMBER,
+    valor NUMBER CHECK (valor > 0),
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
+```
+
+#### ➤ Adicionar uma constraint depois da criação da tabela
+```sql
+ALTER TABLE clientes 
+ADD CONSTRAINT ck_idade CHECK (idade >= 18);
+);
+```
+
+### 🧠 Conceitos-Chave
+
+- **PRIMARY KEY**
+  - Identifica um registro de forma única  
+  - Não aceita valores nulos  
+  - Não permite duplicação  
+
+- **FOREIGN KEY**
+  - Relaciona tabelas  
+  - Garante integridade referencial  
+  - Impede excluir registros que estão sendo referenciados  
+
+- **UNIQUE**
+  - Garante que valores não se repitam em uma coluna  
+
+- **CHECK**
+  - Impõe regras sobre valores (ex.: `valor > 0`)  
+
+- **NOT NULL**
+  - Obrigatório preencher o campo  
+
+
+### ✅ Exemplo Completo da Aula
+```sql
+-- Criar tabela clientes
+CREATE TABLE clientes (
+    id NUMBER PRIMARY KEY,
+    nome VARCHAR2(50) NOT NULL,
+    documento VARCHAR2(20) UNIQUE
+);
+
+-- Criar tabela pedidos com relacionamento
+CREATE TABLE pedidos (
+    id NUMBER PRIMARY KEY,
+    cliente_id NUMBER REFERENCES clientes(id),
+    valor NUMBER CHECK (valor > 0)
+);
+
+-- Criar constraint depois da tabela
+ALTER TABLE clientes
+ADD CONSTRAINT ck_nome CHECK (LENGTH(nome) > 0);
+);
+```
