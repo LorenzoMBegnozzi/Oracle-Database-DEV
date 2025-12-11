@@ -23,4 +23,32 @@ A aula demonstra como criar usuários, atribuir roles e conceder privilégios es
 #### ➤ Criar um usuário
 ```sql
 CREATE USER nome IDENTIFIED BY senha;
+```
+#### ➤ Permitir conexão ao banco
+```sql
+GRANT CREATE SESSION TO nome;
+```
+#### ➤ Conceder permissões básicas de desenvolvimento
+```sql
+GRANT CONNECT, RESOURCE TO nome;
+```
+#### ➤ Criar uma role personalizada
+```sql
+CREATE ROLE minha_role;
+```
+#### ➤ Criar uma role personalizada
+```sql
+GRANT CREATE TABLE TO minha_role;
+```
+#### ➤ Atribuir role a um usuário
+```sql
+GRANT minha_role TO nome;
+```
+### 🧠 Conceitos-Chave
+Usuário: entidade que acessa o banco.
+Role: conjunto de permissões agrupadas para facilitar administração.
+Grant: comando usado para conceder privilégios.
+CREATE SESSION: necessário para login no Oracle.
+Privilégios de sistema: permitem criar tabelas, views, procedures etc.
 
+Privilégios de objeto: permitem SELECT, INSERT, UPDATE e DELETE em tabelas específicas.
